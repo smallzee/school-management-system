@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="header-login">
-                                <a class="header-login__item" href="javascript:void(0);"><i class="icon stroke icon-User"></i>Sign In</a>
+                                <a class="header-login__item" href="login.php"><i class="icon stroke icon-User"></i>Sign In</a>
                             </div>
                         </div>
                         <!-- end col  -->

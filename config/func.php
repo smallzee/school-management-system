@@ -116,3 +116,19 @@ function parent_info($id,$value){
     return $rs[$value];
 }
 
+
+function student_details($value){
+    global $db;
+    $application_id = $_SESSION[STUDENT_SESSION_HOLDER]['application_id'];
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE application_id='$application_id'");
+    $rs = $sql->fetch(PDO::FETCH_ASSOC);
+    return $rs[$value];
+}
+
+function is_student_login(){
+    if (!isset($_SESSION['student-loggedin'])){
+        return 0;
+    }else{
+        return 1;
+    }
+}

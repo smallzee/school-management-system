@@ -34,7 +34,7 @@
 body,
 html {
     background-color: #f0f2f5;
-    background-image: url('../images/logo2fade.png');
+    background-image: url('../../templates/libs/assets/media/main-slider/2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100%;
