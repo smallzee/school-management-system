@@ -13,7 +13,7 @@ require_once 'libs/head.php';
 
 <section class="content">
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="info-box bg-blue-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
@@ -30,7 +30,7 @@ require_once 'libs/head.php';
             <!-- /.info-box -->
         </div>
 
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="info-box bg-blue-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
@@ -47,7 +47,7 @@ require_once 'libs/head.php';
             <!-- /.info-box -->
         </div>
 
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="info-box bg-blue-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
@@ -64,7 +64,7 @@ require_once 'libs/head.php';
             <!-- /.info-box -->
         </div>
 
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="info-box bg-blue-gradient">
                 <span class="info-box-icon"><i class="fa fa-book"></i></span>
                 <div class="info-box-content">
@@ -72,6 +72,40 @@ require_once 'libs/head.php';
                     <span class="info-box-number">
                      <?php
                      $sql = $db->query("SELECT * FROM ".DB_PREFIX."subjects ");
+                     echo $sql->rowCount();
+                     ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box bg-blue-gradient">
+                <span class="info-box-icon"><i class="fa fa-users"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Total Students</span>
+                    <span class="info-box-number">
+                     <?php
+                     $sql = $db->query("SELECT * FROM ".DB_PREFIX."students ");
+                     echo $sql->rowCount();
+                     ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box bg-blue-gradient">
+                <span class="info-box-icon"><i class="fa fa-users"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Total Parent</span>
+                    <span class="info-box-number">
+                     <?php
+                     $sql = $db->query("SELECT * FROM ".DB_PREFIX."parents ");
                      echo $sql->rowCount();
                      ?>
                     </span>

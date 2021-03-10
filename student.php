@@ -50,11 +50,15 @@ if (isset($_POST['add'])){
     $error_count = count($error);
     if ($error_count == 0){
 
-
         if (move_uploaded_file($file['tmp_name'], $destination)){
             $db->query("INSERT INTO ".DB_PREFIX."students (image,parent_id,fname,class_id,
             term,academic_session,gender,birth)VALUES('$img','$parent_id','$fname','$class_id',
             '$term','$session','$gender','$birth')");
+
+            $last_id = $db->lastInsertId();
+            $application_id = sprintf("%08d", $last_id);
+
+            $up = $db->query("UPDATE " . DB_PREFIX . "student_id SET parent_id='$application_id', password='$application_id' WHERE id='$last_id'");
 
             set_flash("Student has been registered successfully","info");
 
@@ -223,6 +227,7 @@ require_once 'libs/head.php';
                                 <tr>
                                     <th>Id</th>
                                     <th>Passport</th>
+                                    <th>Application Id</th>
                                     <th>Full Name</th>
                                     <th>Age</th>
                                     <th>Gender</th>
@@ -237,6 +242,7 @@ require_once 'libs/head.php';
                             <tr>
                                 <th>Id</th>
                                 <th>Passport</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>
@@ -260,6 +266,7 @@ require_once 'libs/head.php';
                                     <tr>
                                         <td><?= $rs['id'] ?></td>
                                         <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 60px;" alt=""></td>
+                                        <td><?= $rs['application_id'] ?></td>
                                         <td><?= $rs['fname'] ?></td>
                                         <td><?= date('Y') - explode("-",$rs['birth'])[0]  ?></td>
                                         <td><?= $rs['gender'] ?></td>
