@@ -9,6 +9,5 @@
 require_once 'config/core.php';
 unset($_SESSION['teacher-loggedin']);
 unset($_SESSION[TEACHER_SESSION_HOLDER]);
-session_destroy();
 set_flash("You have logged out successfully","info");
 redirect(base_url('teacher.php'));

@@ -9,6 +9,5 @@
 require_once 'config/core.php';
 unset($_SESSION['loggedin']);
 unset($_SESSION[USER_SESSION_HOLDER]);
-session_destroy();
 set_flash("You have logged out successfully","info");
 redirect(base_url('admin.php'));

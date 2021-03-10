@@ -8,6 +8,5 @@
 require_once 'config/core.php';
 unset($_SESSION['student-loggedin']);
 unset($_SESSION[STUDENT_SESSION_HOLDER]);
-session_destroy();
 set_flash("You have logged out successfully","info");
 redirect(base_url('login.php'));
