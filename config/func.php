@@ -62,6 +62,14 @@ function admin_details($value){
     return $rs[$value];
 }
 
+function teacher_details($value){
+    global $db;
+    $username = $_SESSION[TEACHER_SESSION_HOLDER]['username'];
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."admin WHERE username='$username'");
+    $rs = $sql->fetch(PDO::FETCH_ASSOC);
+    return $rs[$value];
+}
+
 function role($id){
     global $db;
     $sql = $db->query("SELECT * FROM ".DB_PREFIX."role WHERE id='$id'");

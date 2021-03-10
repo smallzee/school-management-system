@@ -1,11 +1,11 @@
 <?php
-if (!is_student_login()){
-    redirect(base_url('login.php'));
-    return;
-}
+    if (!is_teacher_login()){
+        redirect(base_url('teacher.php'));
+        return;
+    }
 
-$name = student_details('fname');
-$sn =1;
+    $name = teacher_details('fname');
+    $sn =1;
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,8 +72,8 @@ $sn =1;
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?= image_url(student_details('image')) ?>" class="user-image" alt="User Image">
-                            <span class="hidden-xs"><?= ucwords(student_details('fname')) ?> (<?= ucwords(student_class(student_details('class_id'),'name')) ?>)</span>
+                            <img src="<?= image_url('icon.jpeg') ?>" class="user-image" alt="User Image">
+                            <span class="hidden-xs"><?= ucwords(teacher_details('fname')) ?> (<?= ucwords(role(teacher_details('role'))) ?>)</span>
                         </a>
                     </li>
                 </ul>
@@ -87,7 +87,7 @@ $sn =1;
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?= image_url(student_details('image')) ?>" style="width: 40px; height: 40px;" class="img-circle" alt="User Image">
+                    <img src="<?= image_url('icon.jpeg') ?>" style="width: 40px; height: 40px;" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?= ucwords($name) ?></p>
@@ -98,35 +98,15 @@ $sn =1;
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li >
-                    <a href="<?= base_url('tmp.php') ?>">
+                    <a href="<?= base_url('teacher-dashboard.php') ?>">
                         <i class="fa fa-home text-danger "></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li >
-                    <a href="<?= base_url('student-profile.php') ?>">
-                        <i class="fa fa-user text-danger "></i>
-                        <span>Student Profile</span>
-                    </a>
-                </li>
-
-                <li >
-                    <a href="<?= base_url('result.php') ?>">
-                        <i class="fa fa-user text-danger "></i>
-                        <span>Check Result</span>
-                    </a>
-                </li>
-
-                <li >
-                    <a href="<?= base_url('payment-history.php') ?>">
-                        <i class="fa fa-credit-card text-danger "></i>
-                        <span> School Fee Payment History </span>
-                    </a>
-                </li>
 
                 <li>
-                    <a href="<?= base_url('student-logout.php') ?>">
+                    <a href="<?= base_url('teacher-logout.php') ?>">
                         <em class="fa fa-sign-out text-danger"></em>
                         <div class="label label-primary pull-right"></div>
                         <span>Logout</span>

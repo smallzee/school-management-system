@@ -17,7 +17,7 @@ if (isset($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE username='$username' and password='$password'");
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."admin WHERE username='$username' and password='$password'");
     $rs = $sql->fetch(PDO::FETCH_ASSOC);
     if ($sql->rowCount() == 0){
         set_flash("Invalid login details entered","danger");
@@ -26,7 +26,7 @@ if (isset($_POST['login'])){
     }else{
         $rs['password'] = 'xxx';
         $_SESSION['teacher-loggedin'] = true;
-        $_SESSION[USER_SESSION_HOLDER] = $rs;
+        $_SESSION[TEACHER_SESSION_HOLDER] = $rs;
         redirect(base_url('teacher-dashboard.php'));
     }
 }
@@ -71,7 +71,7 @@ if (isset($_POST['login'])){
                                 <?php flash(); ?>
                                 <form class="loginForm" method="post">
                                     <div class="form-group">
-                                        <input type="text" required class="form-control email" name="username" placeholder="Username">
+                                        <input type="text" required class="form-control email" value="<?= @$_POST['username']; ?>" name="username" placeholder="Staff Id">
                                     </div>
                                     <div class="form-group">
                                         <div class="pwdMask">

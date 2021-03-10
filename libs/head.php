@@ -1,6 +1,6 @@
 <?php
     if (!is_login()){
-        redirect(base_url());
+        redirect(base_url('admin.php'));
         return;
     }
 
