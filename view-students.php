@@ -123,6 +123,33 @@ require_once 'libs/head.php';
                                 <th>Actions</th>
                             </tr>
                             </tfoot>
+                            <tbody>
+                                <?php
+                                $sql = $db->query("SELECT s.*, c.name, p.fname as parent_name FROM ".DB_PREFIX."students s 
+                                LEFT JOIN ".DB_PREFIX."class c
+                                    ON s.class_id = c.id
+                                LEFT JOIN ".DB_PREFIX."parents p 
+                                    ON s.parent_id = p.id   
+                                WHERE s.class_id ='$class_id'     
+                                ORDER BY s.id DESC");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 50px;" alt=""></td>
+                                        <td><?= $rs['application_id'] ?></td>
+                                        <td><?= $rs['fname'] ?></td>
+                                        <td><?= date('Y') - explode("-",$rs['birth'])[0]  ?></td>
+                                        <td><?= $rs['gender'] ?></td>
+                                        <td><?= $rs['birth'] ?></td>
+                                        <td><?= $rs['name'] ?></td>
+                                        <td><?= term($rs['term']) ?></td>
+                                        <td><?= $rs['parent_name'] ?></td>
+                                        <td><a href="profile.php?student-id=<?= $rs['id'] ?>" class="btn btn-primary btn-sm">View</a></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                            </tbody>
                         </table>
                     </div>
 
