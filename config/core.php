@@ -14,6 +14,7 @@
 
     define("HOME_DIR","http://projects.io/web/school-management/");
     define("HTML_TEMPLATE",base_url('templates/'));
+    define("LIB_TEMPLATE",HTML_TEMPLATE.'libs/');
     define("USER_SESSION_HOLDER", "admin");
     define("WEB_TITLE","FPE Staff School");
     define("WEB_SUB_TITLE","CH");
