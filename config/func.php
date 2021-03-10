@@ -132,3 +132,11 @@ function is_student_login(){
         return 1;
     }
 }
+
+function is_teacher_login(){
+    if (!isset($_SESSION['teacher-loggedin'])){
+        return 0;
+    }else{
+        return 1;
+    }
+}

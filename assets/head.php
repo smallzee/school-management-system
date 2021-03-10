@@ -73,7 +73,7 @@ $sn =1;
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?= image_url(student_details('image')) ?>" class="user-image" alt="User Image">
-                            <span class="hidden-xs"><?= ucwords(student_details('fname')) ?> (<?= ucwords("s") ?>)</span>
+                            <span class="hidden-xs"><?= ucwords(student_details('fname')) ?> (<?= ucwords(student_class(student_details('class_id'),'name')) ?>)</span>
                         </a>
                     </li>
                 </ul>
@@ -119,7 +119,7 @@ $sn =1;
                 </li>
 
                 <li >
-                    <a href="<?= base_url('student-profile.php') ?>">
+                    <a href="<?= base_url('payment-history.php') ?>">
                         <i class="fa fa-credit-card text-danger "></i>
                         <span> School Fee Payment History </span>
                     </a>

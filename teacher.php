@@ -8,8 +8,8 @@
 
 require_once 'config/core.php';
 
-if (is_student_login()){
-    redirect(base_url('tmp.php'));
+if (is_teacher_login()){
+    redirect(base_url('teacher-dashboard.php'));
     return;
 }
 
@@ -17,16 +17,17 @@ if (isset($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-
-    $sql = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE application_id='$username' and password='$password'");
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE username='$username' and password='$password'");
     $rs = $sql->fetch(PDO::FETCH_ASSOC);
     if ($sql->rowCount() == 0){
         set_flash("Invalid login details entered","danger");
+    }elseif($rs['role'] == 1){
+        set_flash("You are not eligible to access teacher dashboard","danger");
     }else{
         $rs['password'] = 'xxx';
-        $_SESSION['student-loggedin'] = true;
-        $_SESSION[STUDENT_SESSION_HOLDER] = $rs;
-        redirect(base_url('tmp.php'));
+        $_SESSION['teacher-loggedin'] = true;
+        $_SESSION[USER_SESSION_HOLDER] = $rs;
+        redirect(base_url('teacher-dashboard.php'));
     }
 }
 
@@ -37,7 +38,7 @@ if (isset($_POST['login'])){
     <meta property="og:locale" content="en_US">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Student Login</title>
+    <title>Teacher Login</title>
     <link rel="stylesheet" href="templates/css/app.css">
     <link rel="stylesheet" href="templates/css/login5-style.css">
 </head>
@@ -63,14 +64,14 @@ if (isset($_POST['login'])){
                     <!-- panel-login start -->
                     <div class="authfy-panel panel-login text-center active">
                         <div class="authfy-heading">
-                            <h3 class="auth-title">Student Login </h3>
+                            <h3 class="auth-title">Teacher Login </h3>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12">
                                 <?php flash(); ?>
                                 <form class="loginForm" method="post">
                                     <div class="form-group">
-                                        <input type="text" required class="form-control email" name="username" placeholder="Application Id">
+                                        <input type="text" required class="form-control email" name="username" placeholder="Username">
                                     </div>
                                     <div class="form-group">
                                         <div class="pwdMask">

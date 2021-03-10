@@ -28,7 +28,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="header-login">
-                                <a class="header-login__item" href="login.php"><i class="icon stroke icon-User"></i>Sign In</a>
+                                <a class="header-login__item" href="login.php"><i class="icon stroke icon-User"></i>Student Login</a>
+                                <a class="header-login__item" href="teacher.php"><i class="icon stroke icon-User"></i>Teacher Login</a>
                             </div>
                         </div>
                         <!-- end col  -->
@@ -49,9 +50,9 @@
                                 </div>
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="index.php">Home<span class="nav-subtitle">say us hi</span></a>
-                                        <li><a href="contact.html">About Developer<span class="nav-subtitle">say us hi</span></a>
-                                        <li><a href="contact.html">CONTACT<span class="nav-subtitle">say us hi</span></a></li>
+                                        <li><a href="index.php">Home </a>
+                                        <li><a href="about.php">About Developer</a>
+                                        <li><a href="contact.php">CONTACT US</a></li>
                                     </ul>
                                 </div>
                             </nav>

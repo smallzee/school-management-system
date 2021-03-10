@@ -17,7 +17,8 @@
                     <section class="footer-section">
                         <h3 class="footer-title">USEFUL LINKS</h3>
                         <ul class="footer-list list-unstyled">
-                            <li class="footer-list__item"><a class="footer-list__link" href="javascript:void(0);">Student Login</a></li>
+                            <li class="footer-list__item"><a class="footer-list__link" href="login.php">Student Login</a></li>
+                            <li class="footer-list__item"><a class="footer-list__link" href="teacher.php">Teacher Login</a></li>
                             <li class="footer-list__item"><a class="footer-list__link" href="javascript:void(0);">Terms & Conditions</a></li>
                             <li class="footer-list__item"><a class="footer-list__link" href="javascript:void(0);">Privacy Policy</a></li>
                         </ul>

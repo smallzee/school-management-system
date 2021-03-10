@@ -23,6 +23,8 @@ if (isset($_POST['login'])){
 
     if ($sql->rowCount() == 0){
         set_flash("Invalid login details entered","danger");
+    }elseif ($rs['role'] == 2){
+        set_flash("You are not eligible to access admin dashboard","danger");
     }else{
         $rs['password'] = 'xxx';
         $_SESSION['loggedin'] = true;

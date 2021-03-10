@@ -11,4 +11,22 @@ require_once 'config/core.php';
 require_once 'assets/head.php';
 ?>
 
+<section class="content">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-book"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Class name</span>
+                    <span class="info-box-number">
+                        <?= ucwords(student_class(student_details('class_id'),'name')) ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+    </div>
+</section>
+
 <?php require_once 'assets/foot.php'?>
