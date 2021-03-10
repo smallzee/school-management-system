@@ -22,7 +22,6 @@ if (isset($_POST['add'])){
         $error[] = "All field(s) are required";
     }
 
-
     if (strlen($fname) > 100 or strlen($fname) < 10){
         $error[] = "Full name should be between 10 - 100 characters";
     }
@@ -186,7 +185,7 @@ require_once 'libs/head.php';
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" name="add" class="btn btn-primary" value="Register" id="">
+                        <input type="submit" name="add" class="btn btn-danger" value="Register" id="">
                     </div>
                 </form>
 
@@ -217,17 +216,16 @@ require_once 'libs/head.php';
                 </div>
                 <div class="box-body">
 
-                    <button type="button" class="btn btn-primary mb-20" data-toggle="modal" data-target="#modal-default">
-                        Add New Student
+                    <button type="button" class="btn btn-danger mb-20" data-toggle="modal" data-target="#modal-default">
+                       Register New Student
                     </button>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover" id="example1">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Passport</th>
                                     <th>Application Id</th>
+                                    <th>Passport</th>
                                     <th>Full Name</th>
                                     <th>Age</th>
                                     <th>Gender</th>
@@ -240,9 +238,8 @@ require_once 'libs/head.php';
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Id</th>
-                                <th>Passport</th>
                                 <th>Application Id</th>
+                                <th>Passport</th>
                                 <th>Full Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>
@@ -264,9 +261,8 @@ require_once 'libs/head.php';
                                 while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
                                     ?>
                                     <tr>
-                                        <td><?= $rs['id'] ?></td>
-                                        <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 60px;" alt=""></td>
                                         <td><?= $rs['application_id'] ?></td>
+                                        <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 60px;" alt=""></td>
                                         <td><?= $rs['fname'] ?></td>
                                         <td><?= date('Y') - explode("-",$rs['birth'])[0]  ?></td>
                                         <td><?= $rs['gender'] ?></td>

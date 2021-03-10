@@ -119,7 +119,7 @@ require_once 'libs/head.php';
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" name="add" class="btn btn-primary btn-sm" value="Submit" id="">
+                        <input type="submit" name="add" class="btn btn-danger" value="Submit" id="">
                     </div>
                 </form>
             </div>
@@ -146,7 +146,7 @@ require_once 'libs/head.php';
                 </div>
                 <div class="box-body">
 
-                    <button type="button" class="btn btn-default mb-20" data-toggle="modal" data-target="#modal-default">
+                    <button type="button" class="btn btn-danger mb-20" data-toggle="modal" data-target="#modal-default">
                         Add New Class Teacher
                     </button>
 
@@ -190,7 +190,7 @@ require_once 'libs/head.php';
                                         <td>
                                             <div class="btn-group">
                                                 <a href="" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="" class="btn btn-primary btn-sm">View student</a>
+                                                <a href="view-students.php?id=<?= $rs['class_id'] ?>" class="btn btn-primary btn-sm">View student</a>
                                             </div>
                                         </td>
                                     </tr>

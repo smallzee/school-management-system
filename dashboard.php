@@ -14,7 +14,7 @@ require_once 'libs/head.php';
 <section class="content">
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Admin</span>
@@ -31,7 +31,7 @@ require_once 'libs/head.php';
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Staff</span>
@@ -48,7 +48,7 @@ require_once 'libs/head.php';
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Class Teachers</span>
@@ -65,7 +65,7 @@ require_once 'libs/head.php';
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-book"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Class Subject</span>
@@ -82,7 +82,7 @@ require_once 'libs/head.php';
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Students</span>
@@ -99,7 +99,7 @@ require_once 'libs/head.php';
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="info-box bg-blue-gradient">
+            <div class="info-box bg-red-gradient">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text mt-10">Total Parent</span>

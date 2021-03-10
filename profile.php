@@ -34,7 +34,7 @@ require_once 'libs/head.php';
 
             <div class="box box-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-blue-gradient">
+                <div class="widget-user-header bg-red-gradient">
                     <h3 class="widget-user-username"><?= ucwords($data['fname']) ?></h3>
                     <h5 class="widget-user-desc"><?= ucwords($data['name']) ?></h5>
                 </div>

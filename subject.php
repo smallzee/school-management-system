@@ -62,7 +62,7 @@ require_once 'libs/head.php';
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" name="add" class="btn btn-primary" value="Submit" id="">
+                        <input type="submit" name="add" class="btn btn-danger" value="Submit" id="">
                     </div>
                 </form>
             </div>
@@ -91,7 +91,7 @@ require_once 'libs/head.php';
                 </div>
                 <div class="box-body">
 
-                    <a href="#" data-toggle="modal" data-target="#modal-default" class="btn btn-default mb-20">Add Subject</a>
+                    <a href="#" data-toggle="modal" data-target="#modal-default" class="btn btn-danger mb-20">Add Subject</a>
 
                     <?php flash() ?>
 

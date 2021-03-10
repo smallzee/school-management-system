@@ -47,7 +47,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="icon" href="<?= image_url('logo.png') ?>">
 </head>
-<body class="hold-transition skin-blue sidebar-mini" style="font-size: 15px;">
+<body class="hold-transition skin-red sidebar-mini" >
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
@@ -99,78 +99,63 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li >
                     <a href="<?= base_url('dashboard.php') ?>">
-                        <i class="fa fa-home text-primary "></i>
+                        <i class="fa fa-home text-danger "></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('staff.php') ?>">
-                        <i class="fa fa-users text-primary "></i>
+                        <i class="fa fa-users text-danger "></i>
                         <span>All Staffs</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('subject.php') ?>">
-                        <i class="fa fa-book text-primary "></i>
+                        <i class="fa fa-book text-danger "></i>
                         <span>Subjects</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('class-subject.php') ?>">
-                        <i class="fa fa-book text-primary "></i>
+                        <i class="fa fa-book text-danger "></i>
                         <span>Class Subjects</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('class.php') ?>">
-                        <i class="fa fa-users text-primary "></i>
+                        <i class="fa fa-users text-danger "></i>
                         <span>Student Classes</span>
-                    </a>
-                </li>
-
-
-                <li >
-                    <a href="<?= base_url('message.php') ?>">
-                        <i class="fa fa-envelope text-primary "></i>
-                        <span>Sent Messages</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('payment.php') ?>">
-                        <i class="fa fa-credit-card text-primary "></i>
+                        <i class="fa fa-credit-card text-danger "></i>
                         <span>Payment History</span>
                     </a>
                 </li>
 
-<!--                <li >-->
-<!--                    <a href="--><?//= base_url('compose.php') ?><!--">-->
-<!--                        <i class="fa fa-envelope text-primary "></i>-->
-<!--                        <span>Compose Message</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-
                 <li >
                     <a href="<?= base_url('parent.php') ?>">
-                        <i class="fa fa-users text-primary "></i>
+                        <i class="fa fa-users text-danger "></i>
                         <span>Parent's Information</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('student.php') ?>">
-                        <i class="fa fa-users text-primary "></i>
+                        <i class="fa fa-users text-danger "></i>
                         <span>Student's Information</span>
                     </a>
                 </li>
 
                 <li >
                     <a href="<?= base_url('class-teacher.php') ?>">
-                        <i class="fa fa-users text-primary "></i>
+                        <i class="fa fa-users text-danger "></i>
                         <span>Student Class Teachers</span>
                     </a>
                 </li>
