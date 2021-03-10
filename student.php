@@ -224,8 +224,8 @@ require_once 'libs/head.php';
                         <table class="table table-bordered table-striped table-hover" id="example1">
                             <thead>
                                 <tr>
-                                    <th>Application Id</th>
                                     <th>Passport</th>
+                                    <th>Application Id</th>
                                     <th>Full Name</th>
                                     <th>Age</th>
                                     <th>Gender</th>
@@ -238,8 +238,8 @@ require_once 'libs/head.php';
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Application Id</th>
                                 <th>Passport</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>
@@ -261,8 +261,8 @@ require_once 'libs/head.php';
                                 while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
                                     ?>
                                     <tr>
+                                        <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 50px;" alt=""></td>
                                         <td><?= $rs['application_id'] ?></td>
-                                        <td><img src="<?= image_url($rs['image']) ?>" class="img-thumbnail" style="width: 50px; height: 60px;" alt=""></td>
                                         <td><?= $rs['fname'] ?></td>
                                         <td><?= date('Y') - explode("-",$rs['birth'])[0]  ?></td>
                                         <td><?= $rs['gender'] ?></td>
