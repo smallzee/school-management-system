@@ -111,6 +111,13 @@
                     </a>
                 </li>
 
+                <li >
+                    <a href="<?= base_url('teacher-subject.php') ?>">
+                        <i class="fa fa-book text-danger "></i>
+                        <span>Teacher Offering Subjects</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="<?= base_url('teacher-logout.php') ?>">
                         <em class="fa fa-sign-out text-danger"></em>

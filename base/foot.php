@@ -49,64 +49,7 @@
     $(function (e) {
        $("#example1, #example").dataTable();
 
-        $('.select2').select2()
-
-       $("#occupation").change(function () {
-           if ($(this).val() == 'fpe staff'){
-               $(".school-fee-deduction").removeClass('hide');
-               return;
-           }
-
-           $(".school-fee-deduction").addClass('hide');
-       })
-
-
     });
-
-    function  update_class(id,name,amount) {
-        $(".show-modal").click();
-        $("#name").val(name);
-        $("#amount").val(amount);
-        $("#id").val(id);
-    }
-
-    function delete_class(id) {
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url :  '<?= base_url('class.php') ?>',
-                    type : 'post',
-                    dataType : 'json',
-                    data : {
-                        'delete' : '',
-                        'class_id' : id
-                    },
-                    success : function (response) {
-                        if (response.error == 1){
-                            swal("Deleted",response.msg,"success");
-                            setTimeout(function () {
-                                window.location.href ='<?= base_url('class.php') ?>';
-                            }, 2000);
-                        }
-                    },
-                    error : function (err) {
-                        // console.log(err.responseText);
-                        toast_alert("No internet connection, try again","error");
-                    }
-                });
-                return;
-            }
-            swal("Cancelled","cant be deleted","error");
-
-        });
-    }
-
 </script>
 </body>
 </html>

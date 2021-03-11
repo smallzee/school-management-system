@@ -14,11 +14,13 @@ if (!isset($class_id) or empty($class_id)){
     return;
 }
 
+$staff_id = teacher_details('id');
+
 $sql = $db->query("SELECT c.*, a.fname, a.phone, a.email, a.username, cc.name FROM ".DB_PREFIX."class_teacher c 
 LEFT JOIN ".DB_PREFIX."admin a
      ON c.staff_id = a.id 
 LEFT JOIN ".DB_PREFIX."class cc
-     ON c.class_id = cc.id WHERE c.class_id='$class_id'");
+ON c.class_id = cc.id WHERE c.class_id='$class_id' and c.staff_id='$staff_id'");
 
 if ($sql->rowCount() == 0){
     redirect(base_url('teacher-dashboard.php'));
