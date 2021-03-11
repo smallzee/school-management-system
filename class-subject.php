@@ -155,7 +155,7 @@ require_once 'libs/head.php';
                                                     while ($rs3 = $sql3->fetch(PDO::FETCH_ASSOC)){
                                                         ?>
                                                         <tr>
-                                                            <td style="padding-bottom: 5px;"><?= $i.'. '. ucwords($rs3['name']) ?></td>
+                                                            <td style="padding-bottom: 5px;"><?= $i++.'. '. ucwords($rs3['name']) ?></td>
                                                         </tr>
                                                         <?php
                                                     }

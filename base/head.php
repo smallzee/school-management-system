@@ -55,7 +55,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><?= WEB_SUB_TITLE ?></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><?= WEB_TITLE ?></span>
+            <span class="logo-lg"><b><?= "FPE Staff Dashboard" ?></b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
