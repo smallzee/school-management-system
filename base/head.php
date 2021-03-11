@@ -104,6 +104,12 @@
                     </a>
                 </li>
 
+                <li >
+                    <a href="<?= base_url('teacher-class.php') ?>">
+                        <i class="fa fa-user text-danger "></i>
+                        <span>Teacher Students Classes</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="<?= base_url('teacher-logout.php') ?>">

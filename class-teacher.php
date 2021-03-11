@@ -20,9 +20,8 @@ if (isset($_POST['add'])){
 
     $sql = $db->query("SELECT * FROM ".DB_PREFIX."class_teacher WHERE staff_id='$staff_id' and class_id='$staff_id' and session='$session'");
     if ($sql->rowCount() >= 1){
-        $error[] = "";
+        $error[] = "Error";
     }
-
 
     $error_count = count($error);
     if ($error_count == 0){

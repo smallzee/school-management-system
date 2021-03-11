@@ -132,6 +132,7 @@
                     </a>
                 </li>
 
+
                 <li >
                     <a href="<?= base_url('payment.php') ?>">
                         <i class="fa fa-credit-card text-danger "></i>
@@ -143,6 +144,13 @@
                     <a href="<?= base_url('parent.php') ?>">
                         <i class="fa fa-users text-danger "></i>
                         <span>Parent's Information</span>
+                    </a>
+                </li>
+
+                <li >
+                    <a href="<?= base_url('class-teacher.php') ?>">
+                        <i class="fa fa-users text-danger "></i>
+                        <span>Student Class Teachers</span>
                     </a>
                 </li>
 

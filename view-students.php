@@ -9,7 +9,7 @@
 require_once 'config/core.php';
 $class_id = $_GET['id'];
 if (!isset($class_id) or empty($class_id)){
-    redirect(base_url('404'));
+    redirect(base_url('404.php'));
     return;
 }
 
@@ -20,7 +20,7 @@ LEFT JOIN ".DB_PREFIX."class cc
      ON c.class_id = cc.id WHERE c.class_id='$class_id'");
 
 if ($sql->rowCount() == 0){
-    redirect(base_url('404'));
+    redirect(base_url('404.php'));
     return;
 }
 
