@@ -95,4 +95,4 @@ require_once 'base/head.php';
     </div>
 </section>
 
-<?php require_once 'base/head.php'?>
+<?php require_once 'base/foot.php'?>
