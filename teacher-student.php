@@ -101,7 +101,7 @@ require_once 'base/head.php';
                                     <td><?= $rs['name'] ?></td>
                                     <td><?= term($rs['term']) ?></td>
                                     <td><?= $rs['parent_name'] ?></td>
-                                    <td><a href="profile.php?student-id=<?= $rs['id'] ?>" class="btn btn-primary btn-sm">View</a></td>
+                                    <td><a href="student-info.php?student-id=<?= $rs['id'] ?>" class="btn btn-primary btn-sm">View</a></td>
                                 </tr>
                                 <?php
                             }

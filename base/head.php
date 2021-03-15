@@ -107,7 +107,7 @@
                 <li >
                     <a href="<?= base_url('teacher-class.php') ?>">
                         <i class="fa fa-user text-danger "></i>
-                        <span>Teacher Students Classes</span>
+                        <span>Teacher Student Classes</span>
                     </a>
                 </li>
 

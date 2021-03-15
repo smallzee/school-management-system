@@ -44,6 +44,35 @@ require_once 'base/head.php';
             <?php
         }
         ?>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Role</span>
+                    <span class="info-box-number">
+                        <?= ucwords(role(teacher_details('role'))) ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Staff Id</span>
+                    <span class="info-box-number">
+                        <?= ucwords(teacher_details('username')) ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
     </div>
 </section>
 

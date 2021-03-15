@@ -33,6 +33,7 @@ require_once 'base/head.php';
                             <tr>
                                 <th>SN</th>
                                 <th>Class Name</th>
+                                <th>Total Student In class</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -40,6 +41,7 @@ require_once 'base/head.php';
                             <tr>
                                 <th>SN</th>
                                 <th>Class Name</th>
+                                <th>Total Student In class</th>
                                 <th>Actions</th>
                             </tr>
                             </tfoot>
@@ -54,13 +56,21 @@ require_once 'base/head.php';
                                  WHERE c.staff_id = '$staff_id'    
                                 ORDER BY c.id DESC");
                             while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                $class_id = $rs['class_id'];
                                 ?>
                                 <tr>
                                     <td><?= $sn++ ?></td>
                                     <td><?= ucwords($rs['name']) ?></td>
                                     <td>
+                                        <?php
+                                            $sql2 = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE class_id='$class_id'");
+                                            echo $sql2->rowCount();
+                                        ?>
+                                    </td>
+                                    <td>
                                         <div class="btn-group">
-                                            <a href="teacher-student.php?id=<?= $rs['class_id'] ?>" class="btn btn-primary btn-sm">View student</a>
+                                            <a href="attendance.php?id=<?= $class_id ?>" class="btn btn-primary">Attendance</a>
+                                            <a href="teacher-student.php?id=<?= $class_id ?>" class="btn btn-primary ">View student</a>
                                         </div>
                                     </td>
                                 </tr>
