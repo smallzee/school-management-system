@@ -26,6 +26,48 @@ require_once 'assets/head.php';
             </div>
             <!-- /.info-box -->
         </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Application Id </span>
+                    <span class="info-box-number">
+                        <?= student_details('application_id') ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Student Name </span>
+                    <span class="info-box-number">
+                        <?= ucwords(student_details('fname')) ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red-gradient">
+                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text mt-10">Term </span>
+                    <span class="info-box-number">
+                        <?= term(student_details('term')) ?>
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
     </div>
 </section>
 
