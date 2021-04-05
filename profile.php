@@ -80,6 +80,7 @@ require_once 'libs/head.php';
                     <li class="active"><a href="#tab_1" data-toggle="tab">Attendance List</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Profile</a></li>
+                    <li><a href="#tab_5" data-toggle="tab">Payment Histery</a></li>
                     <li class="pull-right"><a href="#tab_4" data-toggle="tab" class="text-muted"><i class="fa fa-gear"></i> Settings</a></li>
                 </ul>
                 <div class="tab-content">
@@ -118,6 +119,62 @@ require_once 'libs/head.php';
                         </div>
                     </div>
                     <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_5">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="example1">
+                                <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Amount Paid</th>
+                                    <th>Reference</th>
+                                    <th>Term</th>
+                                    <th>Class</th>
+                                    <th>Payment Status</th>
+                                    <th>Academic Session</th>
+                                    <th>Paid At</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Amount Paid</th>
+                                    <th>Reference</th>
+                                    <th>Term</th>
+                                    <th>Class</th>
+                                    <th>Payment Status</th>
+                                    <th>Academic Session</th>
+                                    <th>Paid At</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php
+                                $sql = $db->query("SELECT p.*, c.name as class_name, s.application_id, s.fname  FROM ".DB_PREFIX."payment p 
+                                    LEFT JOIN ".DB_PREFIX."class c 
+                                        ON p.class_id = c.id    
+                                        
+                                      INNER JOIN ".DB_PREFIX."students s
+                                      ON p.student_id = s.id  
+                                      WHERE p.student_id = '$student_id'
+                                    ORDER BY p.id DESC");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $sn++ ?></td>
+                                        <td><?= amount_format($rs['amount']) ?></td>
+                                        <td><?= $rs['ref'] ?></td>
+                                        <td><?= term($rs['term_id']) ?></td>
+                                        <td><?= $rs['class_name'] ?></td>
+                                        <td><?= $rs['status'] ?></td>
+                                        <td><?= $rs['academic_session'] ?></td>
+                                        <td><?= $rs['paid_at'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="tab-pane" id="tab_2">
 
                         <div class="table-responsive">

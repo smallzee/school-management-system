@@ -121,7 +121,14 @@ $sn =1;
                 <li >
                     <a href="<?= base_url('payment-history.php') ?>">
                         <i class="fa fa-credit-card text-danger "></i>
-                        <span> School Fee Payment History </span>
+                        <span> Payment History </span>
+                    </a>
+                </li>
+
+                <li >
+                    <a href="<?= base_url('school-payment.php') ?>">
+                        <i class="fa fa-credit-card text-danger "></i>
+                        <span> School Fee Payment </span>
                     </a>
                 </li>
 

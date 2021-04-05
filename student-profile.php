@@ -8,6 +8,7 @@
 
 $page_title = "Student Profile";
 require_once 'config/core.php';
+$student_id = student_details('id');
 require_once 'assets/head.php';
 ?>
 
@@ -56,6 +57,94 @@ require_once 'assets/head.php';
             </div>
             <!-- /.widget-user -->
 
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab">Attendance List</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+
+                        <div class="table-responsive">
+                            <table class="table-bordered table table-striped" id="example">
+                                <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Attendance</th>
+                                    <th>Attendance Date</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Attendance</th>
+                                    <th>Attendance Date</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php
+                                $sql = $db->query("SELECT * FROM ".DB_PREFIX."attendance WHERE student_id='$student_id' ORDER BY id DESC");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $sn++ ?></td>
+                                        <td><?= ucwords($rs['attendance']) ?></td>
+                                        <td><?= $rs['attendance_date'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="example1">
+                                <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Subject Name</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Subject Name</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php
+                                $class_id = student_details('class_id');
+                                $ii =1;
+                                $sql = $db->query("SELECT o.*, s.name FROM ".DB_PREFIX."offering_subjects o 
+                                       INNER JOIN ".DB_PREFIX."subjects s 
+                                        ON o.subject_id = s.id 
+                                    WHERE o.class_id='$class_id'");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $ii++ ?></td>
+                                        <td><?= ucwords($rs['name']) ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
 
         </div>
     </div>

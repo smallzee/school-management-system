@@ -44,5 +44,10 @@
 <script src="<?= HTML_TEMPLATE ?>bower_components/moment/moment.js"></script>
 <script src="<?= HTML_TEMPLATE ?>bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- Page specific script -->
+
+<script type="text/javascript">
+    $("#example1, #example").dataTable();
+</script>
+
 </body>
 </html>
