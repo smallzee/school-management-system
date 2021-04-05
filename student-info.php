@@ -25,12 +25,85 @@ if ($sql->rowCount() == 0){
 $data = $sql->fetch(PDO::FETCH_ASSOC);
 
 $page_title = ucwords($data['fname'])." Profile";
+
+if (isset($_POST['add'])){
+    $attendance = $_POST['attendance'];
+    $attendance_date = $_POST['attendance_date'];
+
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."attendance WHERE student_id='$student_id' and attendance_date='$attendance_date'");
+
+    if (date('Y-m-d') != $attendance_date){
+        $error[] = "You cannot mark attendance for ".$data['fname']." ahead";
+    }
+
+    if ($sql->rowCount() >= 1){
+        $error[] = "You have already mark an attendance for ".$data['fname']." on $attendance_date";
+    }
+
+
+    $error_count = count($error);
+    if ($error_count == 0 ){
+
+        $db->query("INSERT INTO ".DB_PREFIX."attendance (student_id,attendance,attendance_date)VALUES('$student_id','$attendance','$attendance_date')");
+
+        set_flash("Attendance has been marked succcessful","info");
+
+    }else{
+        $msg = ($error_count == 1) ? 'An error is occurred' : 'Some errors are occurred';
+        foreach ($error as $value){
+            $msg.='<p>'.$value.'</p>';
+        }
+        set_flash($msg,'danger');
+    }
+}
+
 require_once 'base/head.php';
 ?>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Attendance</h4>
+            </div>
+            <div class="modal-body">
+
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="">Attendance</label>
+                        <select name="attendance" class="form-control" required id="">
+                            <option value="" disabled selected>Select</option>
+                            <option value="present">Present</option>
+                            <option value="absent">Absent</option>
+                            <option value="left">Left</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Attendance Date</label>
+                        <input type="date" class="form-control" required name="attendance_date" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="add" class="btn btn-danger" value="Submit" id="">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <section class="content">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+
+            <?php flash();?>
 
             <div class="box box-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -84,7 +157,7 @@ require_once 'base/head.php';
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
 
-                        <a href="" class="btn btn-danger" style="margin-bottom: 20px;">Add Attendance</a>
+                        <a href="" class="btn btn-danger" data-toggle="modal" data-target="#modal-default" style="margin-bottom: 20px;">Add Attendance</a>
 
                         <div class="table-responsive">
                             <table class="table-bordered table table-striped" id="example">
@@ -92,16 +165,30 @@ require_once 'base/head.php';
                                 <tr>
                                     <th>S/N</th>
                                     <th>Attendance</th>
-                                    <th>Created At</th>
+                                    <th>Attendance Date</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
                                     <th>S/N</th>
                                     <th>Attendance</th>
-                                    <th>Created At</th>
+                                    <th>Attendance Date</th>
                                 </tr>
                                 </tfoot>
+                                <tbody>
+                                    <?php
+                                        $sql = $db->query("SELECT * FROM ".DB_PREFIX."attendance WHERE student_id='$student_id' ORDER BY id DESC");
+                                        while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                            ?>
+                                            <tr>
+                                                <td><?= $sn++ ?></td>
+                                                <td><?= ucwords($rs['attendance']) ?></td>
+                                                <td><?= $rs['attendance_date'] ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
 

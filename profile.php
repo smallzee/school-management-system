@@ -84,7 +84,38 @@ require_once 'libs/head.php';
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-
+                        <div class="table-responsive">
+                            <table class="table-bordered table table-striped" id="example">
+                                <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Attendance</th>
+                                    <th>Attendance Date</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Attendance</th>
+                                    <th>Attendance Date</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php
+                                $sql = $db->query("SELECT * FROM ".DB_PREFIX."attendance WHERE student_id='$student_id' ORDER BY id DESC");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $sn++ ?></td>
+                                        <td><?= ucwords($rs['attendance']) ?></td>
+                                        <td><?= $rs['attendance_date'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
