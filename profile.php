@@ -80,7 +80,7 @@ require_once 'libs/head.php';
                     <li class="active"><a href="#tab_1" data-toggle="tab">Attendance List</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Profile</a></li>
-                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    <li class="pull-right"><a href="#tab_4" data-toggle="tab" class="text-muted"><i class="fa fa-gear"></i> Settings</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -157,6 +157,55 @@ require_once 'libs/head.php';
 
                     </div>
                     <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_4">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="">Term</label>
+                                <select name="term" class="form-control" id="" required>
+                                    <?php
+                                       foreach (array(1,2,3) as $value){
+                                           ?>
+                                           <option value="<?= $value ?>" <?= ($value == $data['term']) ? 'selected' : ''?>><?= term($value) ?></option>
+                                           <?php
+                                       }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Class</label>
+                                <select name="class" id="" required class="form-control">
+                                    <?php
+                                    $sql = $db->query("SELECT * FROM ".DB_PREFIX."class");
+                                    while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                        ?>
+                                        <option value="<?= $rs['id'] ?> <?= ($rs['id'] == $data['class_id']) ? 'selected' : ''?>"><?= ucwords($rs['name']) ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Academic Session</label>
+                                <select name="session" class="form-control" required id="">
+                                    <option value="" disabled selected>Select</option>
+                                    <?php
+                                    foreach (range('2020',date('Y')) as $value){
+                                        $start = $value-1;
+                                        ?>
+                                        <option value="<?= $start.'-'.$value ?>" <?= ($start.'-'.$value == $data['academic_session']) ? 'selected' : '' ?>><?= $start.'-'.$value ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" value="Submit" name="update" id="">
+                            </div>
+                        </form>
+                    </div>
                     <div class="tab-pane" id="tab_3">
 
                         <div class="table-responsive">
