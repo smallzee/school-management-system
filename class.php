@@ -213,7 +213,6 @@ require_once 'libs/head.php';
                                         <td>
                                             <div class="btn-group">
                                                 <a href="#" onclick="update_class('<?= $rs['id'] ?>','<?= $rs['name'] ?>','<?= $rs['school_fee'] ?>')" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" onclick="delete_class('<?= $rs['id'] ?>')" class="btn btn-danger btn-sm">Danger</a>
                                             </div>
                                         </td>
                                     </tr>

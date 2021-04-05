@@ -55,13 +55,13 @@ if (isset($_POST['add'])){
             '$term','$session','$gender','$birth')");
 
             $last_id = $db->lastInsertId();
-            $application_id = sprintf("%08d", $last_id);
+            $application_id = sprintf("%05d", $last_id);
 
-            $up = $db->query("UPDATE " . DB_PREFIX . "student_id SET parent_id='$application_id', password='$application_id' WHERE id='$last_id'");
+            $up = $db->query("UPDATE " . DB_PREFIX . "students SET application_id='$application_id', password='$application_id' WHERE id='$last_id'");
 
             set_flash("Student has been registered successfully","info");
 
-            redirect(base_url('student.php'));
+            //redirect(base_url('student.php'));
         }
 
     }else{

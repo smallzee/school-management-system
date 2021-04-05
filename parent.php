@@ -213,7 +213,7 @@ require_once 'libs/head.php';
                 </div>
                 <div class="box-body">
 
-                    <button type="button" class="btn btn-default mb-20" data-toggle="modal" data-target="#modal-default">
+                    <button type="button" class="btn btn-danger mb-20" data-toggle="modal" data-target="#modal-default">
                         Add New Parent
                     </button>
 
