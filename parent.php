@@ -232,7 +232,6 @@ require_once 'libs/head.php';
                                 <th>Gender</th>
                                 <th>Occupation</th>
                                 <th>Created At</th>
-                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -246,7 +245,6 @@ require_once 'libs/head.php';
                                 <th>Gender</th>
                                 <th>Occupation</th>
                                 <th>Created At</th>
-                                <th>Actions</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -264,7 +262,6 @@ require_once 'libs/head.php';
                                         <td><?= ucwords($rs['gender']) ?></td>
                                         <td><?= ucwords($rs['occupation']) ?></td>
                                         <td><?= $rs['created_at'] ?></td>
-                                        <td><a href="<?= base_url('view-parent.php?id=').$rs['id']; ?>" class="btn btn-primary btn-sm">View</a></td>
                                     </tr>
                                     <?php
                                 }

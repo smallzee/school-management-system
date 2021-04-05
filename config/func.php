@@ -70,6 +70,14 @@ function teacher_details($value){
     return $rs[$value];
 }
 
+function class_teacher($value){
+    global $db;
+    $teacher_id = teacher_details('id');
+    $sql = $db->query("SELECT * FROM ".DB_PREFIX."class_teacher WHERE staff_id='$teacher_id'");
+    $rs = $sql->fetch(PDO::FETCH_ASSOC);
+    return $rs[$value];
+}
+
 function role($id){
     global $db;
     $sql = $db->query("SELECT * FROM ".DB_PREFIX."role WHERE id='$id'");

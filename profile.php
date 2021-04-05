@@ -16,7 +16,9 @@ if (!isset($student_id) or empty($student_id)){
 $sql = $db->query("SELECT s.*, c.name FROM ".DB_PREFIX."students s
  LEFT JOIN ".DB_PREFIX."class c 
     ON s.class_id = c.id
- WHERE c.id='$student_id'");
+ WHERE s.id='$student_id'");
+
+
 if ($sql->rowCount() == 0){
     redirect(base_url('404.php'));
     return;

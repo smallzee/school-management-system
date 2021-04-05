@@ -31,7 +31,7 @@ require_once 'base/head.php';
                         <span class="info-box-text mt-10">Total <?= ucwords($rs['name']) ?></span>
                         <span class="info-box-number">
                      <?php
-                        $class_id = $rs['id'];
+                        $class_id = $rs['class_id'];
                          $sqls = $db->query("SELECT * FROM ".DB_PREFIX."students WHERE class_id='$class_id' ");
                          echo $sqls->rowCount();
                      ?>
