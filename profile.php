@@ -26,12 +26,24 @@ $data = $sql->fetch(PDO::FETCH_ASSOC);
 
 $page_title = ucwords($data['fname'])." Profile";
 
+if (isset($_POST['update'])){
+    $class_id = $_POST['class'];
+    $session = $_POST['session'];
+    $term = $_POST['term'];
+
+    $up = $db->query("UPDATE ".DB_PREFIX."students SET class_id='$class_id', academic_session='$session', term='$term' WHERE id='$student_id'");
+
+    set_flash("Profile has been updated successful","info");
+}
+
 require_once 'libs/head.php';
 ?>
 
 <section class="content">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+
+            <?php flash() ?>
 
             <div class="box box-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -81,7 +93,7 @@ require_once 'libs/head.php';
                     <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Profile</a></li>
                     <li><a href="#tab_5" data-toggle="tab">Payment Histery</a></li>
-                    <li class="pull-right"><a href="#tab_4" data-toggle="tab" class="text-muted"><i class="fa fa-gear"></i> Settings</a></li>
+                    <li class="pull-right"><a href="#tab_4" data-toggle="tab" class="text-muted"><i class="fa fa-gear"></i> Student Profile</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -236,7 +248,7 @@ require_once 'libs/head.php';
                                     $sql = $db->query("SELECT * FROM ".DB_PREFIX."class");
                                     while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
                                         ?>
-                                        <option value="<?= $rs['id'] ?> <?= ($rs['id'] == $data['class_id']) ? 'selected' : ''?>"><?= ucwords($rs['name']) ?></option>
+                                        <option value="<?= $rs['id'] ?>" <?= ($rs['id'] == $data['class_id']) ? 'selected' : '' ?> ><?= ucwords($rs['name']) ?></option>
                                         <?php
                                     }
                                     ?>

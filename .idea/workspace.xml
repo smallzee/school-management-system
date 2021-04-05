@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7420c1e-0ed5-43c7-9bf3-32e8117e6cbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/school-payment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/images/remitaLogo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/foot.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/foot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/foot.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/head.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-history.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment-history.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/student-profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,11 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/payment-history.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="239">
               <caret line="82" column="75" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -118,13 +118,13 @@
         <option value="$PROJECT_DIR$/teacher-dashboard.php" />
         <option value="$PROJECT_DIR$/attendance.php" />
         <option value="$PROJECT_DIR$/student-info.php" />
-        <option value="$PROJECT_DIR$/profile.php" />
         <option value="$PROJECT_DIR$/assets/foot.php" />
         <option value="$PROJECT_DIR$/student-profile.php" />
-        <option value="$PROJECT_DIR$/payment.php" />
         <option value="$PROJECT_DIR$/assets/head.php" />
         <option value="$PROJECT_DIR$/school-payment.php" />
         <option value="$PROJECT_DIR$/payment-history.php" />
+        <option value="$PROJECT_DIR$/payment.php" />
+        <option value="$PROJECT_DIR$/profile.php" />
       </list>
     </option>
   </component>
@@ -233,18 +233,18 @@
       <workItem from="1616076508716" duration="75000" />
       <workItem from="1617516641565" duration="1475000" />
       <workItem from="1617552878351" duration="401000" />
-      <workItem from="1617598822238" duration="5524000" />
+      <workItem from="1617598822238" duration="6066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30101000" />
+    <option name="totallyTimeSpent" value="30643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="776" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.38772213" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.38772213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -509,13 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="211" column="14" lean-forward="true" selection-start-line="211" selection-start-column="14" selection-end-line="211" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/head.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
@@ -558,16 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/payment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="90" column="26" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="90" selection-end-column="26" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -625,10 +608,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="89" column="26" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="89" selection-end-column="26" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/payment-history.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="82" column="75" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
         </state>
       </provider>
     </entry>
