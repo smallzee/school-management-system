@@ -79,7 +79,7 @@ require_once 'libs/head.php';
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">Attendance List</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Profile</a></li>
                     <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
                 </ul>
                 <div class="tab-content">
@@ -158,13 +158,60 @@ require_once 'libs/head.php';
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Application Id</td>
+                                    <td><?= $data['application_id'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Student Name</td>
+                                    <td><?= $data['fname'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Class Name</td>
+                                    <td><?= student_class($data['class_id'],'name') ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Term</td>
+                                    <td><?= term($data['term']) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Academic Session</td>
+                                    <td><?= $data['academic_session'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td><?= ucwords($data['gender']) ?></td>
+                                </tr>
+                            </table>
+
+                            <h6 class="page-header">Parent Information</h6>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Full Name</td>
+                                    <td><?= parent_info($data['parent_id'],'fname') ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td><?= parent_info($data['parent_id'],'gender') ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td><?= parent_info($data['parent_id'],'phone') ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Email Address</td>
+                                    <td><?= parent_info($data['parent_id'],'email') ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Occupation</td>
+                                    <td><?= parent_info($data['parent_id'],'occupation') ?></td>
+                                </tr>
+                            </table>
+                        </div>
+
                     </div>
                     <!-- /.tab-pane -->
                 </div>

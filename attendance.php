@@ -50,9 +50,45 @@ require_once 'base/head.php';
                 </div>
                 <div class="box-body">
 
-                    <form action="" method="post">
-                        <h6 class="page-header">Mark Attendance</h6>
-                    </form>
+                    <div class="table-responsive">
+                        <table class="table-bordered table table-striped" id="example">
+                            <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Application Id</th>
+                                <th>Full Name</th>
+                                <th>Attendance</th>
+                                <th>Attendance Date</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Application Id</th>
+                                <th>Full Name</th>
+                                <th>Attendance</th>
+                                <th>Attendance Date</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            <?php
+                            $sql = $db->query("SELECT a.*, s.application_id, s.fname FROM ".DB_PREFIX."attendance a
+                              LEFT JOIN ".DB_PREFIX."students s ON a.student_id = s.id ORDER BY id DESC");
+                            while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                ?>
+                                <tr>
+                                    <td><?= $sn++ ?></td>
+                                    <td><?= $rs['application_id'] ?></td>
+                                    <td><?= $rs['fname'] ?></td>
+                                    <td><?= ucwords($rs['attendance']) ?></td>
+                                    <td><?= $rs['attendance_date'] ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
             </div>
