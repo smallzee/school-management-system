@@ -162,7 +162,7 @@ require_once 'libs/head.php';
 
         <div class="col-sm-6">
             <div class="box ">
-                <div class="box-header with-border">All Staffs</div>
+                <div class="box-header with-border">All Students</div>
                 <div class="box-body">
 
                     <div class="table-responsive">
@@ -170,29 +170,30 @@ require_once 'libs/head.php';
                             <thead>
                             <tr>
                                 <th>SN</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
-                                <th>Phone Number</th>
-                                <th>Email Address</th>
+                                <th>Class</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>SN</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
-                                <th>Phone Number</th>
-                                <th>Email Address</th>
+                                <th>Class</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             <?php
-                            $sql = $db->query("SELECT * FROM ".DB_PREFIX."admin ORDER BY id DESC LIMIT 0,8");
+                            $sql = $db->query("SELECT * FROM ".DB_PREFIX."students ORDER BY id DESC LIMIT 0,8");
+
                             while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
                                 ?>
                                 <tr>
                                     <td><?= $sn++ ?></td>
+                                    <td><?= $rs['application_id'] ?></td>
                                     <td><?= $rs['fname'] ?></td>
-                                    <td><?= $rs['phone'] ?></td>
-                                    <td><?= $rs['email'] ?></td>
+                                    <td><?= student_class($rs['class_id'],'name') ?></td>
                                 </tr>
                                 <?php
                             }

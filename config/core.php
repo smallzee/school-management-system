@@ -23,6 +23,8 @@
     define("WEB_TITLE","FPE Staff School");
     define("WEB_SUB_TITLE","CH");
 
+    define("APP_PROTOCOL", "http://");
+
     if (Env == "online") {
         define('DB_HOST', 'localhost');
         define('DB_TABLE', 'verajnse_creche');

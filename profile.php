@@ -24,6 +24,8 @@ if ($sql->rowCount() == 0){
     return;
 }
 
+$data_result = $results = array();
+
 $data = $sql->fetch(PDO::FETCH_ASSOC);
 
 $page_title = ucwords($data['fname'])." Profile";
@@ -36,6 +38,70 @@ if (isset($_POST['update'])){
     $up = $db->query("UPDATE ".DB_PREFIX."students SET class_id='$class_id', academic_session='$session', term='$term' WHERE id='$student_id'");
 
     set_flash("Profile has been updated successful","info");
+
+    redirect(get_current_url());
+}
+
+if (isset($_POST['add-result'])){
+    $subject_id = @$_POST['subject_id'];
+    $term = $data['term'];
+    $class_id = $data['class_id'];
+    $score = @$_POST['score'];
+    $academic_session = $data['academic_session'];
+    $position = $_POST['position'];
+    $comment = $_POST['comment'];
+
+    for ($i =0; $i < count($subject_id); $i++){
+        $in = $db->prepare("INSERT INTO ".DB_PREFIX."results (student_id,subject_id,score,term,class_id,academic_session) VALUES(:student_id,:subject_id,:score,:term,:class_id,:academic_session)");
+        $in->execute(array(
+            'student_id'=>$student_id,
+            'subject_id' =>$subject_id[$i],
+            'score' => $score[$i],
+            'term'=>$term,
+            'class_id'=>$class_id,
+            'academic_session'=>$academic_session
+        ));
+    }
+
+    $ins = $db->prepare("INSERT INTO ".DB_PREFIX."student_position (student_id,term,class_id,academic_session,position,comment)VALUES(:student_id,:term,:class_id,:academic_session,:position,:comment)");
+    $ins->execute(array(
+        'student_id'=>$student_id,
+        'term'=>$term,
+        'class_id'=>$class_id,
+        'academic_session'=>$academic_session,
+        'position'=>$position,
+        'comment'=>$comment
+    ));
+
+    set_flash("Result has been uploaded successfully","info");
+
+    redirect(get_current_url());
+
+}
+
+if (isset($_POST['check-result'])){
+    $term = $_POST['term'];
+    $class_id = $_POST['class'];
+    $session = $_POST['session'];
+    
+    $sql = $db->query("SELECT r.*, s.name as subject FROM ".DB_PREFIX."results r INNER JOIN ".DB_PREFIX."offering_subjects o_s ON r.subject_id = o_s.id INNER JOIN ".DB_PREFIX."subjects s ON o_s.subject_id = s.id WHERE r.term='$term' and r.class_id='$class_id' and r.academic_session='$session' and r.student_id='$student_id'");
+
+
+    if ($sql->rowCount() == 0){
+        set_flash("No result found","danger");
+    }else{
+        while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+            $data_result[] = $rs;
+        }
+        $sqls = $db->query("SELECT * FROM ".DB_PREFIX."student_position WHERE student_id ='$student_id' and class_id='$class_id' and term='$term' and academic_session='$session'");
+
+        $position_data = $sqls->fetch(PDO::FETCH_ASSOC);
+    }
+
+    $results = array(
+        'data_result' => $data_result,
+        'position_data'=>$position_data
+    );
 }
 
 require_once 'libs/head.php';
@@ -94,7 +160,9 @@ require_once 'libs/head.php';
                     <li class="active"><a href="#tab_1" data-toggle="tab">Attendance List</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Offering Subjects</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Profile</a></li>
-                    <li><a href="#tab_5" data-toggle="tab">Payment Histery</a></li>
+                    <li><a href="#tab_5" data-toggle="tab">Payment History</a></li>
+                    <li><a href="#tab_4" data-toggle="tab">Upload Result</a></li>
+                    <li><a href="#tab_6" data-toggle="tab">Result History</a></li>
                     <li class="pull-right"><a href="#tab_4" data-toggle="tab" class="text-muted"><i class="fa fa-gear"></i> Student Profile</a></li>
                 </ul>
                 <div class="tab-content">
@@ -227,55 +295,165 @@ require_once 'libs/head.php';
                         </div>
 
                     </div>
-                    <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_4">
                         <form action="" method="post">
-                            <div class="form-group">
-                                <label for="">Term</label>
-                                <select name="term" class="form-control" id="" required>
-                                    <?php
-                                       foreach (array(1,2,3) as $value){
-                                           ?>
-                                           <option value="<?= $value ?>" <?= ($value == $data['term']) ? 'selected' : ''?>><?= term($value) ?></option>
-                                           <?php
-                                       }
+                            <div class="row">
+                                <?php
+                                $class_id = $data['class_id'];
+                                $ii =1;
+                                $sql = $db->query("SELECT o.*, s.name FROM ".DB_PREFIX."offering_subjects o 
+                                       INNER JOIN ".DB_PREFIX."subjects s 
+                                        ON o.subject_id = s.id 
+                                    WHERE o.class_id='$class_id'");
+                                while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
                                     ?>
-                                </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for=""><?= ucwords($rs['name']) ?></label>
+                                            <input type="hidden" name="subject_id[]" value="<?= $rs['id'] ?>" id="">
+                                            <input type="number" value="0" class="form-control" step="any" name="score[]" required id="">
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+
+                                <hr class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Student Position</label>
+                                        <input type="text" class="form-control" placeholder="Eg 1st" required name="position" id="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Student Comment</label>
+                                        <input type="text" class="form-control" placeholder="Comment about student" required name="comment" id="">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="">Class</label>
-                                <select name="class" id="" required class="form-control">
-                                    <?php
-                                    $sql = $db->query("SELECT * FROM ".DB_PREFIX."class");
-                                    while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
-                                        ?>
-                                        <option value="<?= $rs['id'] ?>" <?= ($rs['id'] == $data['class_id']) ? 'selected' : '' ?> ><?= ucwords($rs['name']) ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Academic Session</label>
-                                <select name="session" class="form-control" required id="">
-                                    <option value="" disabled selected>Select</option>
-                                    <?php
-                                    foreach (range('2020',date('Y')) as $value){
-                                        $start = $value-1;
-                                        ?>
-                                        <option value="<?= $start.'-'.$value ?>" <?= ($start.'-'.$value == $data['academic_session']) ? 'selected' : '' ?>><?= $start.'-'.$value ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-danger" value="Submit" name="update" id="">
+                                <input type="submit" class="btn btn-danger" value="Submit" name="add-result" id="">
                             </div>
                         </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_6">
+                        <form action="" method="post">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Term</label>
+                                        <select name="term" class="form-control" id="" required>
+                                            <?php
+                                            foreach (array(1,2,3) as $value){
+                                                ?>
+                                                <option value="<?= $value ?>" <?= ($value == $data['term']) ? 'selected' : ''?>><?= term($value) ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Class</label>
+                                        <select name="class" id="" required class="form-control">
+                                            <?php
+                                            $sql = $db->query("SELECT * FROM ".DB_PREFIX."class");
+                                            while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                                ?>
+                                                <option value="<?= $rs['id'] ?>" <?= ($rs['id'] == $data['class_id']) ? 'selected' : '' ?> ><?= ucwords($rs['name']) ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Academic Session</label>
+                                        <select name="session" class="form-control" required id="">
+                                            <option value="" disabled selected>Select</option>
+                                            <?php
+                                            foreach (range('2020',date('Y')) as $value){
+                                                $start = $value-1;
+                                                ?>
+                                                <option value="<?= $start.'-'.$value ?>" <?= ($start.'-'.$value == $data['academic_session']) ? 'selected' : '' ?>><?= $start.'-'.$value ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" value="Submit" name="check-result" id="">
+                            </div>
+                        </form>
+
+                        <h5 class="page-header">Result Information</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="example1">
+                                <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Subject</th>
+                                    <th>Score</th>
+                                    <th>Term</th>
+                                    <th>Class</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Subject</th>
+                                    <th>Score</th>
+                                    <th>Term</th>
+                                    <th>Class</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php
+                                    $i =1;
+                                    if (is_array($results) && count($results) > 0){
+                                        foreach ($results['data_result'] as $value){
+                                            ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= ucwords($value['subject']) ?></td>
+                                                <td><?= $value['score'] ?></td>
+                                                <td><?= term($value['term']) ?></td>
+                                                <td><?= student_class($value['class_id'],'name') ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+                            <?php
+                                if (is_array($results) && count($results) > 0){
+                                    ?>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Position</th>
+                                            <td><?= $results['position_data']['position'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Comment</th>
+                                            <td><?= $results['position_data']['comment'] ?></td>
+                                        </tr>
+                                    </table>
+                                <?php
+                                }
+                            ?>
+                        </div>
                     </div>
                     <div class="tab-pane" id="tab_3">
 
@@ -331,6 +509,64 @@ require_once 'libs/head.php';
                                 </tr>
                             </table>
                         </div>
+
+                        <h5 class="page-header">Update</h5>
+
+                        <form action="" method="post">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Term</label>
+                                        <select name="term" class="form-control" id="" required>
+                                            <?php
+                                            foreach (array(1,2,3) as $value){
+                                                ?>
+                                                <option value="<?= $value ?>" <?= ($value == $data['term']) ? 'selected' : ''?>><?= term($value) ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Class</label>
+                                        <select name="class" id="" required class="form-control">
+                                            <?php
+                                            $sql = $db->query("SELECT * FROM ".DB_PREFIX."class");
+                                            while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                                                ?>
+                                                <option value="<?= $rs['id'] ?>" <?= ($rs['id'] == $data['class_id']) ? 'selected' : '' ?> ><?= ucwords($rs['name']) ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Academic Session</label>
+                                        <select name="session" class="form-control" required id="">
+                                            <option value="" disabled selected>Select</option>
+                                            <?php
+                                            foreach (range('2020',date('Y')) as $value){
+                                                $start = $value-1;
+                                                ?>
+                                                <option value="<?= $start.'-'.$value ?>" <?= ($start.'-'.$value == $data['academic_session']) ? 'selected' : '' ?>><?= $start.'-'.$value ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" value="Submit" name="update" id="">
+                            </div>
+                        </form>
 
                     </div>
                     <!-- /.tab-pane -->

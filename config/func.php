@@ -121,6 +121,12 @@ function amount_format($amount){
     return "&#8358;".number_format($amount,2);
 }
 
+function get_current_url($with_query = 1){
+    return APP_PROTOCOL.$_SERVER['HTTP_HOST'].
+        ($with_query? $_SERVER['REQUEST_URI'] : parse_url(
+            APP_PROTOCOL.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], PHP_URL_PATH));
+}
+
 function checkemail($str) {
     return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
 }
