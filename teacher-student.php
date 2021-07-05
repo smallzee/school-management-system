@@ -54,8 +54,8 @@ require_once 'base/head.php';
                         <table class="table table-bordered" id="example1">
                             <thead>
                             <tr>
-                                <th>Application Id</th>
                                 <th>Passport</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>
@@ -68,8 +68,8 @@ require_once 'base/head.php';
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Application Id</th>
                                 <th>Passport</th>
+                                <th>Application Id</th>
                                 <th>Full Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>

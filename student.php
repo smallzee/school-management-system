@@ -62,6 +62,8 @@ if (isset($_POST['add'])){
             set_flash("Student has been registered successfully","info");
 
             //redirect(base_url('student.php'));
+
+            redirect(get_current_url());
         }
 
     }else{
